@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useState } from 'react';
 
-export default function Player({initialName, symbol, isActive}){
+export default function Player({ initialName, symbol, isActive }) {
   const [playerName, setPlayerName] = useState(initialName);/*<- we use this state to save the player name and 
   to update the {playerName} whenever it change, here we use initialName as an inital vlaue for the use state,
    we use obj destructuring to get functions called playerName, setPlayerNmae function */
@@ -15,7 +15,7 @@ export default function Player({initialName, symbol, isActive}){
   //state updates are not performed instantly but at some point in th future(when react has time for it)
   //because of this criteria if we use the state update like this it doesnt work look below.
   /* setIsEditing(!isEditing); => true as isEditing is set to false by default 
-  setIsEditing(!isEditing);=> false  this is what we would expect but that is not the case with react */
+  setIsEditing(!isEditing);=> true, false  this is what we would expect but that is not the case with react */
 /*  we have the same behaviour as we did with the second like here, so that is why we should use the 
 functions here as in this case react schedules the code here */ 
 /* so the second line also does not change the state update to false but it stays true, so avoid this from 
@@ -36,6 +36,7 @@ declare it*/
    which has the handleChange, and this input element turns out to have a value property which will 
    hold the value property the used tried to enter  */
 
+  
   let editablePlayerName = <span className="player-name">{playerName}</span>;
 
   if (isEditing) {
